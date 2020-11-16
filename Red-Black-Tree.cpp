@@ -57,7 +57,7 @@ private:
 		}
 	}
 
-	void print2DUtil(Node<T>* root, int space, int &count)
+	void print2DUtil(Node<T>* root, int space)
 	{
 		// Base case  
 		if (root == NIL)
@@ -348,7 +348,7 @@ public:
 	void print_all()
 	{
 		int count = 0;
-		print2DUtil(root,0,count);
+		print2DUtil(root,0);
 		std::cout << std::endl;
 		printInOrder(root);
 		std::cout << std::endl;
