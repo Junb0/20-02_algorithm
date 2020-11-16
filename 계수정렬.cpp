@@ -1,5 +1,6 @@
 #include<iostream>
 #define N 10
+#define DIGITS(i) (arr[i] % (exp * 10)) / exp
 using namespace std;
 
 int getMax(int arr[], int n) {
@@ -13,16 +14,16 @@ int getMax(int arr[], int n) {
 void countingSort(int arr[], int n, int exp) {
 	int C[10] = { 0, };
 	for (int i = 0; i < n; ++i)
-		C[(arr[i] % (exp * 10)) / exp]++;
+		C[DIGITS(i)]++;
 	for (int i = 1; i < 10; ++i)
 		C[i] = C[i] + C[i - 1];
-	int* arr_tmp = new int;
+	int arr_tmp[100];
 	for (int i = n - 1; i >= 0; --i) {
-		arr_tmp[C[(arr[i] % (exp * 10)) / exp]] = arr[i];
-		C[(arr[i] % (exp * 10)) / exp]--;
+		arr_tmp[C[DIGITS(i)]] = arr[i];
+		C[DIGITS(i)]--;
 	}
-	arr = arr_tmp;
-	delete[] arr_tmp;
+	for (int i = 0; i < n; ++i)
+		arr[i] = arr_tmp[i + 1];
 }
 
 void radixSort(int arr[], int n) {
@@ -33,7 +34,7 @@ void radixSort(int arr[], int n) {
 }
 
 int main() {
-	int arr[N] = { 33, 12, 36, 10, 20, 99, 10, 3, 50, 49 };
+	int arr[N] = { 33, 12, 36, 10, 121, 99, 472, 3, 50, 49 };
 	cout << "Á¤·Ä Àü : ";
 	for(int i = 0; i < N; ++i)
 		cout << arr[i] << ' ';
