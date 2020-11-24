@@ -1,6 +1,6 @@
 #include<iostream>
 #define V 5
-#define INF INT_MAX
+#define INF 9999
 using namespace std;
 
 int min(int a, int b) {
@@ -37,11 +37,11 @@ void floydWarshall(int graph[V][V]) {
 
 int main() {
 	int graph[V][V] = {
-	{0, 4, 2, 5, INF},
-	{INF, 0, 1, INF, 4},
-	{1, 3, 0, 1, 2},
-	{-2, INF, INF, 0, 2},
-	{INF, -3, 3, 1, 0}
+	{0	,4	,2	,5	,INF},
+	{INF,0	,1	,INF,4	},
+	{1	,3	,0	,1	,2	},
+	{-2	,INF,INF,0	,2	},
+	{INF,-3	,3	,1	,0	}
 	};
 
 	floydWarshall(graph);
